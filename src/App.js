@@ -1,14 +1,40 @@
 import React from 'react';
 import './App.css';
 
+const list = [
+  {
+    title: 'React',
+    url: 'https://reacts.org',
+    author: 'Jordan Wlke',
+    num_comments: 3,
+    points: 4,
+    objecrsID: 0
+  },
+  {
+    title: 'Redux',
+    url: 'https://resux,js.org',
+    author: 'Dan Abramov, Andrew Clfrk',
+    num_comments: 2,
+    points: 5,
+    objecrsID: 1
+  }
+]
+
 function App() {
-  const helloWorld = 'Welcome to the Way React learn!'
-  const user = {name: 'Вася', lastname: 'Пупкин'}
   return (
     <div className="App">
-      <h2> {helloWorld} </h2>
-      <h2>{user.name}</h2>
-      <h2>{user.lastname}</h2>
+      {list.map(function(item){
+        return (
+          <div key={item.objecrsID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+          </div>
+        )
+      })}
     </div>
   );
 }
