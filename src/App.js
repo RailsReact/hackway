@@ -26,11 +26,19 @@ class App extends React.Component  {
     this.state = {
       list: list,
     };
+    this.onDismiss= this.onDismiss.bind(this);
   }
+
+  onDismiss(id){
+    const isNotId = item => item.objecrsID !== id;
+    const updateList = this.state.list.filter(isNotId);
+    this.setState({ list: updateList });
+  }
+
   render(){
     return (
       <div className="App">
-        {htis.state.list.map(item =>
+        {this.state.list.map(item =>
           <div key={item.objecrsID}>
             <span>
               <a href={item.url}>{item.title}</a>
@@ -38,6 +46,14 @@ class App extends React.Component  {
             <span>{item.author}</span>
             <span>{item.num_comments}</span>
             <span>{item.points}</span>
+            <span>
+              <button
+                onClick={() => this.onDismiss(item.objecrsID)}
+                type="button"
+              >
+                Отбросить
+              </button>
+            </span>
           </div>
         )}
       </div>
