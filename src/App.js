@@ -21,10 +21,16 @@ const list = [
 ]
 
 class App extends React.Component  {
+  constructor(props){
+    super(props);
+    this.state = {
+      list: list,
+    };
+  }
   render(){
     return (
       <div className="App">
-        {list.map(item =>
+        {htis.state.list.map(item =>
           <div key={item.objecrsID}>
             <span>
               <a href={item.url}>{item.title}</a>
