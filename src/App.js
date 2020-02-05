@@ -54,6 +54,7 @@ class App extends React.Component  {
         <form>
           <input 
             type="text" 
+            value={searchTerm}
             onChange={this.onSearchChange}
           />
         </form>
