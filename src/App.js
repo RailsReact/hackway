@@ -43,10 +43,11 @@ class App extends React.Component  {
   }
 
   onDismiss(id){
-    const isNotId = item => item.objecrsID !== id;
-    const updateList = this.state.result.hits.filter(isNotId);
+    const isNotId = item => item.objectID !== id;
+    const updatedHits = this.state.result.hits.filter(isNotId);
     this.setState({
-      result: { ...this.state.result, hits: updateList }
+      result: { ...this.state.result, hits: updatedHits }
+      //result: Object.assign({}, this.state.result, { hits: updatedHits })
     });
   }
 
@@ -99,7 +100,7 @@ function Table({list, pattern, onDismiss}){
   return (
     <div className="table">
       {list.filter(isSearched(pattern)).map(item =>
-        <div key={item.objecrsID} className="table-row">
+        <div key={item.objectID} className="table-row">
           <span style={largeColumn}>
             <a href={item.url}>{item.title}</a>
           </span>
@@ -114,7 +115,7 @@ function Table({list, pattern, onDismiss}){
           </span>
           <span style={smallColumn}>
             <Button
-              onClick={() => onDismiss(item.objecrsID)}
+              onClick={() => onDismiss(item.objectID)}
               className = "button-inline"
             >
               Отбросить
