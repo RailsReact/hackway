@@ -51,10 +51,12 @@ class App extends React.Component  {
     const {searchTerm, list}=this.state
     return (
       <div className="App">
-        <Seardh 
+        <Search 
           value = {searchTerm}
           onChange = {this.onSearchChange}
-        />
+        >
+          Поиск
+        </Search>
         <Table 
           list = {list}
           pattern = {searchTerm}
@@ -65,11 +67,11 @@ class App extends React.Component  {
   }
 }
 
-class Seardh extends React.Component{
+class Search extends React.Component{
   render(){
-    const {value, onChange} = this.props;
+    const {value, onChange, children } = this.props;
     return (
-      <form>
+      { children } <form>
         <input 
           type="text" 
           value={value}
