@@ -50,13 +50,15 @@ class App extends React.Component  {
   render(){
     const {searchTerm, list}=this.state
     return (
-      <div className="App">
-        <Search 
-          value = {searchTerm}
-          onChange = {this.onSearchChange}
-        >
-          Поиск
-        </Search>
+      <div className="page">
+        <div className="interactions">
+          <Search 
+            value = {searchTerm}
+            onChange = {this.onSearchChange}
+          >
+            Поиск
+          </Search>
+        </div>
         <Table 
           list = {list}
           pattern = {searchTerm}
@@ -80,19 +82,35 @@ const Search = ({value, onChange, children }) => {
 }
 
 function Table({list, pattern, onDismiss}){
+  const largeColumn = {
+    width: '40%',
+  };
+  const midColumn = {
+    width: '30%',
+  };
+  const smallColumn = {
+    width: '10%',
+  };
   return (
-    <div>
+    <div className="table">
       {list.filter(isSearched(pattern)).map(item =>
-        <div key={item.objecrsID}>
-          <span>
+        <div key={item.objecrsID} className="table-row">
+          <span style={largeColumn}>
             <a href={item.url}>{item.title}</a>
           </span>
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-          <span>
+          <span style={midColumn}>
+            {item.author}
+          </span>
+          <span style={smallColumn}>
+            {item.num_comments}
+          </span>
+          <span style={smallColumn}>
+            {item.points}
+          </span>
+          <span style={smallColumn}>
             <Button
               onClick={() => onDismiss(item.objecrsID)}
+              className = "button-inline"
             >
               Отбросить
             </Button>
