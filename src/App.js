@@ -67,7 +67,7 @@ class App extends React.Component  {
   }
 }
 
-function Search({value, onChange, children }){
+const Search = ({value, onChange, children }) => {
   return (
     <form>
       { children } <input 
