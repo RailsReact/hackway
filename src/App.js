@@ -46,7 +46,7 @@ class App extends React.Component  {
     const isNotId = item => item.objecrsID !== id;
     const updateList = this.state.result.hits.filter(isNotId);
     this.setState({
-      result: Object.assign({}, this.state.result, {hits: updateList})
+      result: { ...this.state.result, hits: updateList }
     });
   }
 
